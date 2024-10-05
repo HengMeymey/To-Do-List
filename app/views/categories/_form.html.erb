@@ -1,0 +1,21 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <div style="color: red; margin-bottom: 20px;">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <%= form.label :name, style: "flex: 0 0 100px; margin-right: 10px; font-weight: bold;" %>
+    <%= form.text_field :name, style: "flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" %>
+  </div>
+
+  <div style="text-align: center;">
+    <%= form.submit "Save Category", style: "padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;" %>
+  </div>
+<% end %>
