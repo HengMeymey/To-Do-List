@@ -23,6 +23,15 @@
       </div>
     </div>
 
+    <div class="form-group" style="display: flex; align-items: center; margin-bottom: 20px;">
+      <div style="flex: 0 0 100px; font-weight: bold; margin-right: 10px;">
+        <%= f.label :status, "Status" %>
+      </div>
+      <div style="flex: 1;">
+        <%= f.select :status, Task.statuses.keys.map { |status| [status.humanize, status] }, {}, class: "form-control", style: "padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%;" %>
+      </div>
+    </div>
+
     <div class="form-group" style="margin-top: 20px; text-align: center;">
       <%= f.submit "Submit", class: "btn btn-primary" %>
     </div>

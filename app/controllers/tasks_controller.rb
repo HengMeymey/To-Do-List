@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index 
-    @tasks = Task.all
+    @sort_order = params[:order] == 'desc' ? 'desc' : 'asc'
+    @tasks = Task.order(status: @sort_order)
   end
 
   def new
@@ -55,6 +56,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :category_id, :is_completed)
+    params.require(:task).permit(:name, :category_id, :is_completed, :status)
   end
 end
